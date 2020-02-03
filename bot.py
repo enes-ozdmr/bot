@@ -8,8 +8,7 @@ with open("test-bot.txt","r") as f:
 
 client=commands.Bot(command_prefix=".",help_command=None,activity=discord.Game(name="FOREX | .help"))
 embed=discord.Embed(title="Güncel Döviz Kurları için",
-        description=".dollar\n.euro\n.bitcoin\n.sterlin",
-    )
+                    description=".dollar\n.euro\n.bitcoin\n.sterlin")
 @client.event
 async def on_ready():
     print("Bot is ready")
@@ -57,10 +56,10 @@ async def dovizkuru(ctx):
     "euro": "EURTRY",
     "bitcoin":"BTCUSD",
     "pound":"GBPTRY",
-    "sterlin":"GBPTRY"
-}
+    "sterlin":"GBPTRY",
+    }
     crr=currencies[ctx.invoked_with]
-#bitcoin value is displayed in terms of us dollars in order to avoiding volatility issues.
+    #bitcoin value is displayed in terms of us dollar in order to avoid volatility issues.
 
     usdobject=requests.get(f"https://finance.yahoo.com/quote/{crr}=X")
     usdobject.raise_for_status()
